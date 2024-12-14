@@ -6,10 +6,15 @@ search.addEventListener("input",function(event){
     getData(event.target.value);
 });
 async function getData(country="egypt"){
+   try{
     let data=await fetch(`https://api.weatherapi.com/v1/forecast.json?key=85e797461a03475980b115405241312&q=${country}&days=3&aqi=no&alerts=no`);
     data=await data.json();
 
     addWeather(data.forecast.forecastday,data.location.name);
+   }catch(e){
+    console.log(e);
+   }
+
     
 }
 
@@ -57,13 +62,6 @@ function addWeather(listOfWeather,country){
     }
     weathers.innerHTML=display;
 }
-
-// async function getData(){
-//   let data= await fetch("http://api.weatherapi.com/v1/forecast.json?key=85e797461a03475980b115405241312&q=Egypt&days=3&aqi=no&alerts=no");
-//   let data2 =await data.json();
-  
-//   console.log(data2);
-// }
 
 
 getData();
