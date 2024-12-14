@@ -6,7 +6,7 @@ search.addEventListener("input",function(event){
     getData(event.target.value);
 });
 async function getData(country="egypt"){
-    let data=await fetch(`http://api.weatherapi.com/v1/forecast.json?key=85e797461a03475980b115405241312&q=${country}&days=3&aqi=no&alerts=no`);
+    let data=await fetch(`https://api.weatherapi.com/v1/forecast.json?key=85e797461a03475980b115405241312&q=${country}&days=3&aqi=no&alerts=no`);
     data=await data.json();
 
     addWeather(data.forecast.forecastday,data.location.name);
